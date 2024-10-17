@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard Test</title>
+</head>
+<body>
+    <button id="copyButton">データをコピー</button>
+    <p id="message"></p>
+
+    <script>
+        document.getElementById('copyButton').addEventListener('click', () => {
+            const testData = "テストデータ"; // コピーするテストデータ
+
+            navigator.clipboard.writeText(testData)
+                .then(() => {
+                    document.getElementById('message').textContent = 'コピーしました！'; // 成功メッセージ
+                })
+                .catch(err => {
+                    console.error('コピーに失敗しました: ', err);
+                    document.getElementById('message').textContent = 'コピーできませんでした。'; // 失敗メッセージ
+                });
+        });
+    </script>
+</body>
+</html>
